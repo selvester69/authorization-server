@@ -9,12 +9,13 @@ import java.util.UUID;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
@@ -28,6 +29,7 @@ import org.springframework.security.oauth2.server.authorization.config.annotatio
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
@@ -69,24 +71,33 @@ public class SecurityConfig {
                         .anyRequest().authenticated())
                 // Form login handles the redirect to the login page from the
                 // authorization server filter chain
-                .formLogin(formLogin -> formLogin.loginPage("/login").permitAll()); // Use custom login page
+                .formLogin(formLogin -> formLogin.loginPage("/login").permitAll()) // Use custom login page
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/api/auth/register") // <--- ADD THIS LINE
+                );
         return http.build();
     }
 
     @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder.encode("password"))
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(user);
+    public UserDetailsManager userDetailsManager(PasswordEncoder passwordEncoder) {
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        // Create an initial user if needed. In a real app, you'd likely remove this
+        // or check if the user already exists before creating.
+        if (!manager.userExists("user")) { // Check if user already exists
+            UserDetails user = User.builder()
+                    .username("user")
+                    .password(passwordEncoder.encode("password"))
+                    .roles("USER")
+                    .build();
+            manager.createUser(user); // Use manager to create user
+        }
+        return manager; // Return the manager instance
     }
-
-    @Bean
-    public UserDetailsService userDetailsService(InMemoryUserDetailsManager inMemoryUserDetailsManager) {
-        return inMemoryUserDetailsManager;
-    }
+    // @Bean
+    // public UserDetailsService userDetailsService(InMemoryUserDetailsManager
+    // inMemoryUserDetailsManager) {
+    // return inMemoryUserDetailsManager;
+    // }
 
     @Bean
     public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder) {
@@ -141,5 +152,11 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 }
