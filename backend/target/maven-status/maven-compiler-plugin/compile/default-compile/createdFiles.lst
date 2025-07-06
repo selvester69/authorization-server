@@ -1,0 +1,6 @@
+com/project/authorization/AuthorizationApplication.class
+com/project/authorization/config/CorsConfig$1.class
+com/project/authorization/controller/RegistrationController.class
+com/project/authorization/config/CorsConfig.class
+com/project/authorization/dto/RegistrationRequest.class
+com/project/authorization/config/SecurityConfig.class

@@ -1,0 +1,154 @@
+<mxfile>
+  <diagram id="jIqGEkekAhwi5qpn3fcP" name="OAuth 2.0 Authorization Code Grant">
+    <mxGraphModel dx="1144" dy="811" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Client Application" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f9f;strokeColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="100" y="200" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="User&#39;s Browser" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bbf;strokeColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Authorization Server" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ccf;strokeColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="635" y="160" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="User" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fbf;strokeColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="605" y="320" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Authorization Server&#39;s Token Endpoint" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fcf;strokeColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="340" y="320" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Resource Server" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cfc;strokeColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="190" y="470" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.993;exitY=0.121;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="2" target="3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="110" as="sourcePoint" />
+            <mxPoint x="310" y="110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="380" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="Redirect with Client ID, Scope, Redirect URI" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="8">
+          <mxGeometry x="0.04" y="-3" relative="1" as="geometry">
+            <mxPoint x="1" y="-63" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.005;exitY=0.864;exitDx=0;exitDy=0;entryX=0.134;entryY=0.033;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="3" target="4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="110" as="sourcePoint" />
+            <mxPoint x="660" y="160" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="659" y="109" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="User Login Page" style="endArrow=classic;html=1;rounded=0;entryX=0.569;entryY=-0.005;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryPerimeter=0;" edge="1" parent="1" source="4" target="5">
+          <mxGeometry x="0.2859" y="-9" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="730" y="250" as="sourcePoint" />
+            <mxPoint x="800" y="260" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="Credentials" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry x="0.309" y="1" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="780" y="319" as="sourcePoint" />
+            <mxPoint x="780" y="240" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="Consent Screen" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="4" target="5">
+          <mxGeometry x="0.4348" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="150" as="sourcePoint" />
+            <mxPoint x="650" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="580" y="200" />
+              <mxPoint x="580" y="350" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="Approve/Deny" style="endArrow=classic;html=1;rounded=0;entryX=0.029;entryY=1.009;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="4">
+          <mxGeometry x="0.2" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="640" y="320" as="sourcePoint" />
+            <mxPoint x="640" y="190" as="targetPoint" />
+            <Array as="points" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="Authorization Code Redirect to Client&#39;s Redirect URI" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="159" as="sourcePoint" />
+            <mxPoint x="510" y="110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="700" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="Authorization Code" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="3" target="2">
+          <mxGeometry x="0.0001" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="110" as="sourcePoint" />
+            <mxPoint x="280" y="110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="180" y="80" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="Exchange Code for Token (Client ID, Client Secret, Auth Code)" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="6">
+          <mxGeometry x="0.3333" y="-10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="150" as="sourcePoint" />
+            <mxPoint x="180" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="420" y="240" />
+            </Array>
+            <mxPoint x="10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="Access Token, Refresh Token" style="endArrow=classic;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="2">
+          <mxGeometry x="0.0039" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="470" as="sourcePoint" />
+            <mxPoint x="650" y="520" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="360" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="Access Token in Request" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="2" target="7">
+          <mxGeometry x="0.2593" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="150" as="sourcePoint" />
+            <mxPoint x="180" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="140" y="500" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="Validate Access Token (Optional: with Authorization Server)" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="7" target="6">
+          <mxGeometry x="0.5294" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="630" as="sourcePoint" />
+            <mxPoint x="650" y="680" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="420" y="500" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="Protected Resources" style="endArrow=classic;html=1;rounded=0;exitX=0.013;exitY=0.819;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="2">
+          <mxGeometry x="0.6018" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="630" as="sourcePoint" />
+            <mxPoint x="60" y="240" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="60" y="520" />
+              <mxPoint x="60" y="240" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
