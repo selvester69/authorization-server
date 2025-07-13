@@ -1,33 +1,44 @@
-# Java
-*.class
-*.jar
-*.war
-*.ear
+# === BACKEND IGNORE RULES ===
+backend/target/
+backend/logs/
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/*.iml
+backend/.idea/
+backend/.gradle/
+backend/build/
+backend/.DS_Store
+backend/Thumbs.db
+backend/spring.log
+backend/application-*.yml
+backend/application-*.properties
+backend/test-output/
+backend/*.class
+backend/*.jar
+backend/*.war
+backend/*.ear
+backend/*.log
+backend/*.tmp
+backend/hs_err_pid*
+backend/.mvn/wrapper/maven-wrapper.jar
 
-# Maven
-/logs/
-/target/
-!.mvn/wrapper/maven-wrapper.jar
+# === FRONTEND IGNORE RULES ===
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.DS_Store
+frontend/Thumbs.db
+frontend/.vscode/
+frontend/.idea/
+frontend/*.log
 
-# Eclipse
-.classpath
-.project
-.settings/
-
-# IntelliJ
-*.iml
-.idea/
-
-# VS Code
-.vscode/
-
-# OS generated
+# === COMMON/ROOT IGNORE RULES ===
 .DS_Store
 Thumbs.db
-
-# Environment
-.env
-
-# Others
+.vscode/
+.idea/
 *.log
 *.tmp
+backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst

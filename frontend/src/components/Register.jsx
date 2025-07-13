@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // npm install axios
+import axios from 'axios';
 import { API_ENDPOINTS } from '../apiConfig';
+import { useNavigate } from 'react-router-dom';
 
 function RegistrationForm() {
     const [username, setUsername] = useState('');
@@ -8,6 +9,7 @@ function RegistrationForm() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,6 +26,10 @@ function RegistrationForm() {
             setUsername('');
             setPassword('');
             setEmail('');
+            // Redirect to login page after successful registration
+            setTimeout(() => {
+                navigate('/login');
+            }, 1500); // 1.5 seconds delay to show success message
         } catch (err) {
             if (err.response && err.response.data) {
                 setError(err.response.data);

@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
+        <version>3.5.3</version>
         <!-- <relativePath /> lookup parent from repository -->
     </parent>
     <properties>
@@ -52,7 +52,6 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <version>3.0.2</version>
         </dependency>
     </dependencies>
     <build>

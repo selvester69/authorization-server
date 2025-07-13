@@ -9,7 +9,7 @@ import org.springframework.lang.NonNull;
 @Configuration
 public class CorsConfig {
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
+    WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(@NonNull CorsRegistry registry) {
