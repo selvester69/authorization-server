@@ -1,0 +1,50 @@
+name: selvester69 Daily Commit
+
+on:
+  schedule:
+    # Run once every day at 1:00 AM UTC.
+    - cron: '0 1 * * *'
+  # You can also add workflow_dispatch to run it manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        # Use the main branch
+        ref: main
+
+    - name: Create file and commit once daily
+      run: |
+        echo "--- Starting daily commit ---"
+        FILE="commit_number.md"
+
+        # Check if file exists and update the counter, or create it
+        if [ ! -f "$FILE" ]; then
+          echo "Creating file for the first time."
+          echo "Hello, my name is selvester" > "$FILE"
+          echo "Daily commit number: 1" >> "$FILE"
+        else
+          CURRENT_COUNT=$(grep -oP 'Daily commit number: \K\d+' "$FILE")
+          if [ -z "$CURRENT_COUNT" ]; then
+            CURRENT_COUNT=0
+          fi
+          NEXT_COUNT=$((CURRENT_COUNT + 1))
+          sed -i "/Daily commit number: /c\Daily commit number: $NEXT_COUNT" "$FILE"
+          echo "Incremented daily commit number to $NEXT_COUNT."
+        fi
+
+        # Configure git, commit, and push the changes
+        git config --global user.name "selvester69"
+        git config --global user.email "selvester69@gmail.com"
+        git add "$FILE"
+        git commit -m "Daily commit: Updated commit_number.md"
+        # Push to the specified repository: selvester69/authorization-server
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/selvester69/authorization-server.git
+        echo "--- Pushed daily commit successfully. ---"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
